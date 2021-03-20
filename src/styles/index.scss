@@ -1,3 +1,23 @@
+ @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 /* 
     General Styles
 */
+
+nav{
+    background: black;
+}
+#logo{
+    width: 12rem;
+}
+footer{
+    color:  #ffe81f;
+    background: black;
+    font-family: 'Bebas Neue', cursive;
+}
+#social{
+    width: 20rem;
+}
+.ico{
+    margin: 1rem;
+    color:  #ffe81f;
+}

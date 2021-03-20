@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.scss";
-import p1 from "../../img/person.jpg";
+import p1 from "../../img/chow.jpg";
 import p2 from "../../img/Sullust.png";
 
 export const Home = () => (
 	<div className="text-center">
-		<br />
-		<div className="container-fluid mt-5">
+		<div className="container-fluid">
 			<h1>Characters</h1>
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-1 pb-4 pt-2">
 				<div className="col-5">
@@ -22,22 +21,41 @@ export const Home = () => (
 							</p>
 						</div>
 						<div id="botones" className="w-50">
-							<Link to="/detail">
-								<button type="button" className="btn  btn-warning m-2">
-									More info..
-								</button>
-							</Link>
+							<button type="button" className="btn  btn-warning m-2">
+								More info..
+							</button>
 							<button type="button" className="btn  btn-warning m-2">
 								Add to favorites
 							</button>
 						</div>
 					</div>
 				</div>
+
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
 			</div>
 		</div>
-		<br />
-		<br />
-		<div className="container-fluid mt-5">
+
+		<div className="container-fluid">
 			<h1 className="mt-2">Planets</h1>
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-1 pb-4 pt-2">
 				<div className="col-5">
@@ -52,20 +70,35 @@ export const Home = () => (
 							</p>
 						</div>
 						<div id="botones" className="w-50">
-							<Link to="/detail">
-								<button type="button" className="btn  btn-warning m-2">
-									More info..
-								</button>
-							</Link>
+							<button type="button" className="btn  btn-warning m-2">
+								More info..
+							</button>
 							<button type="button" className="btn  btn-warning m-2">
 								Add to favorites
 							</button>
 						</div>
 					</div>
 				</div>
+
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
+				<div className="col-5">
+					<div className="card card-block card-1" />
+				</div>
 			</div>
 		</div>
-		<br />
-		<br />
 	</div>
 );

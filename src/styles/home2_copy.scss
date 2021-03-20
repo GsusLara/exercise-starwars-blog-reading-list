@@ -9,31 +9,14 @@ body{
 	color: #ffe81f;
     font-family: 'Bebas Neue', cursive;
 }
-::-webkit-scrollbar:vertical {
-    display: none;
-}
-
-  ::-webkit-scrollbar {
-      width:  10px;
-      height: 10px;
-  }
-  
-
-  ::-webkit-scrollbar-thumb {
-      background: gray;
-  }
-
-  ::-webkit-scrollbar-track {
-      background: transparent;
-  }
-
-
+::-webkit-scrollbar {display: none;}
 h1{
 	font-weight: 800;
 	font-size: 3em;
 }
 
 .card-block{
+    
 	height: 15rem;
 	background-color: transparent;
 	background-position: center;

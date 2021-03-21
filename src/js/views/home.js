@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.scss";
-import p1 from "../../img/person.jpg";
+import { card, Card } from "../component/card";
 import p2 from "../../img/Sullust.png";
 
 export const Home = () => (
@@ -10,29 +10,7 @@ export const Home = () => (
 		<div className="container-fluid mt-5">
 			<h1>Characters</h1>
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-1 pb-4 pt-2">
-				<div className="col-5">
-					<div className="card card-block card-1">
-						<img src={p1} className="rounded float-start" />
-						<div id="description" className="w-50 h-75  p-2 text-justify">
-							<h3>Chewbacca</h3>
-							<p className="text-break">
-								Es un wookiee, un bípedo alto, peludo y robusto, especie inteligente del planeta
-								Kashyyyk. Chewbacca es el leal amigo y socio de Han Solo, y sirve como copiloto en la
-								nave espacial de Solo, el Halcón Milenario.
-							</p>
-						</div>
-						<div id="botones" className="w-50">
-							<Link to="/detail">
-								<button type="button" className="btn  btn-warning m-2">
-									More info..
-								</button>
-							</Link>
-							<button type="button" className="btn  btn-warning m-2">
-								Add to favorites
-							</button>
-						</div>
-					</div>
-				</div>
+				<Card />
 			</div>
 		</div>
 		<br />

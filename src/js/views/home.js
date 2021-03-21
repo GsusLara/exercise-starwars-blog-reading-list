@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { CardPerson } from "../component/cardPerson";
 import { CardPlanets } from "../component/cardPlanets";
@@ -25,10 +26,6 @@ export const Home = () => (
 			<br />
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
 				<CardPlanets name="tierra" />
-				<CardPlanets name="marte" />
-				<CardPlanets name="jupiter" />
-				<CardPlanets name="saturno" />
-				<CardPlanets name="pluton" />
 			</div>
 		</div>
 		<br />

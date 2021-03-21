@@ -1,3 +1,5 @@
+import { object } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -7,23 +9,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			planetas: () => {
-				await fetch("https://swapi.dev/api/planets/", {
+				fetch("https://swapi.dev/api/planets/", {
 					method: "GET",
 					headers: { "Content-Type": "application/json" }
 				})
 					.then(response => response.json())
-					.then(result => setStore({planetas:result}))
-					.catch(error);
+					.then(result => console.log(result.results));
 			},
 
 			personajes: () => {
 				fetch("https://akabab.github.io/starwars-api/api/all.json", {
-					method: "GET",
-					headers: { "Content-Type": "application/json" }
+					method: "GET"
 				})
 					.then(response => response.json())
-					.then(result => console.log(result))
-					.catch(error => console.log("error", error));
+					.then(result => console.log(result));
 			}
 		}
 	};

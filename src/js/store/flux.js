@@ -7,17 +7,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			planetas: () => {
-				fetch("https://www.swapi.tech/api/planets", {
+				await fetch("https://swapi.dev/api/planets/", {
 					method: "GET",
 					headers: { "Content-Type": "application/json" }
 				})
 					.then(response => response.json())
-					.then(result => console.log(result))
-					.catch(error => console.log("error", error));
+					.then(result => setStore({planetas:result}))
+					.catch(error);
 			},
 
 			personajes: () => {
-				fetch("https://www.swapi.tech/api/people", {
+				fetch("https://akabab.github.io/starwars-api/api/all.json", {
 					method: "GET",
 					headers: { "Content-Type": "application/json" }
 				})

@@ -6,32 +6,30 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar">
 			<img id="logo" src={logo} />
-			<div className="dropdown">
+
+			<div className="dropdown" style={{ marginRight: "7rem" }}>
 				<button
 					className="btn btn-warning dropdown-toggle"
 					type="button"
-					id="dropdownMenuButton1"
-					data-bs-toggle="dropdown"
+					id="dropdownMenuButton"
+					data-toggle="dropdown"
+					aria-haspopup="true"
 					aria-expanded="false">
 					Favorites
 				</button>
-				<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1" style={{ background: "white" }}>
-					<li>
-						<a className="dropdown-item" href="#">
-							Action
-						</a>
-					</li>
-					<li>
-						<a className="dropdown-item" href="#">
-							Another action
-						</a>
-					</li>
-					<li>
-						<a className="dropdown-item" href="#">
-							Something else here
-						</a>
-					</li>
-				</ul>
+				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					{store.favorites.map((item, index) => {
+						return (
+							<li key={index} className="dropdown-item" href="#">
+								{item}
+								<i
+									className="fas fa-trash-alt float-right"
+									onClick={() => actions.favoritos("del", item)}
+								/>
+							</li>
+						);
+					})}
+				</div>
 			</div>
 		</nav>
 	);

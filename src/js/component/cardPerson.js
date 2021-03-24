@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export function CardPerson(props) {
+	const { store, actions } = useContext(Context);
 	CardPerson.propTypes = {
 		name: PropTypes.string,
 		sexo: PropTypes.string,
@@ -33,7 +35,10 @@ export function CardPerson(props) {
 							More info..
 						</button>
 					</Link>
-					<button type="button" className="btn  btn-warning m-2">
+					<button
+						type="button"
+						className="btn  btn-warning m-2"
+						onClick={() => actions.favoritos("add", props.name)}>
 						Add to favorites
 					</button>
 				</div>

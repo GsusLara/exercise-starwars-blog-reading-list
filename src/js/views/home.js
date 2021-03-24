@@ -22,6 +22,7 @@ export const Home = () => {
 								img={item.image}
 								sexo={item.gender}
 								origen={item.homeworld}
+								id={index}
 							/>
 						);
 					})}
@@ -40,6 +41,7 @@ export const Home = () => {
 								name={item.name}
 								tamaño={item.diameter}
 								poblacion={item.population}
+								id={index}
 							/>
 						);
 					})}

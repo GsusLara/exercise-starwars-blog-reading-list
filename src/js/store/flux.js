@@ -4,7 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			planets: [],
 			people: [],
-			favorites: []
+			favorites: [],
+			personaje: "",
+			mundillo: ""
 		},
 		actions: {
 			planetas: () => {
@@ -34,13 +36,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (temporal.includes(nombre) == false) {
 						temporal.push(nombre);
 					} else {
-						alert("ya está en tus favoritos");
+						alert("it's already in your favorites");
 					}
 				}
 				if (orden === "del") {
 					temporal = temporal.filter(word => word !== nombre);
 				}
 				setStore({ favorites: temporal });
+			},
+			detalle: id => {
+				setStore({ personaje: id });
+			},
+			detalleP: id => {
+				setStore({ mundillo: id });
 			}
 		}
 	};

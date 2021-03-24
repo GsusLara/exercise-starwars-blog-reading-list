@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
+import p2 from "../../img/Sullust.png";
 
-export const Info = () => {
+export const InfoPlanet = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div className="text-center ">
-			<h1>{store.people[store.personaje].name}</h1>
+			<h1>{store.planets[store.mundillo].name}</h1>
 
 			<div className="container">
 				<div className="row">
@@ -15,43 +16,43 @@ export const Info = () => {
 						<br />
 						<br />
 						<li className="list-group-item bg-transparent">
-							Height:
-							{store.people[store.personaje].height}
+							Diameter:
+							{store.planets[store.mundillo].diameter}
 						</li>
 						<li className="list-group-item bg-transparent">
-							Mass:
-							{store.people[store.personaje].mass}
+							Rotation Period:
+							{store.planets[store.mundillo].rotation_period}
 						</li>
 						<li className="list-group-item bg-transparent">
-							Gender:
-							{store.people[store.personaje].gender}
+							Orbital Period:
+							{store.planets[store.mundillo].orbital_period}
 						</li>
-						<li className="list-group-item bg-transparent ">
-							Home world:
-							{store.people[store.personaje].homeworld}
+						<li className="list-group-item bg-transparent">
+							Surface Water:
+							{store.planets[store.mundillo].surface_water}
 						</li>
 					</div>
 					<div className="col-sm">
-						<img src={store.people[store.personaje].image} style={{ height: "20rem" }} />
+						<img src={p2} style={{ height: "20rem" }} />
 					</div>
 					<div className="col-sm">
 						<br />
 						<br />
 						<li className="list-group-item bg-transparent">
-							Born:
-							{store.people[store.personaje].born}
+							Gravity:
+							{store.planets[store.mundillo].gravity}
 						</li>
 						<li className="list-group-item bg-transparent">
-							Died:
-							{store.people[store.personaje].died}
+							Terrain:
+							{store.planets[store.mundillo].terrain}
 						</li>
 						<li className="list-group-item bg-transparent">
-							Species:
-							{store.people[store.personaje].species}
+							Climate:
+							{store.planets[store.mundillo].climate}
 						</li>
-						<li className="list-group-item bg-transparent ">
-							Cybernetics:
-							{store.people[store.personaje].cybernetics}
+						<li className="list-group-item bg-transparent">
+							Population:
+							{store.planets[store.mundillo].population}
 						</li>
 					</div>
 				</div>
@@ -64,7 +65,7 @@ export const Info = () => {
 			<button
 				type="button"
 				className="btn  btn-warning m-2"
-				onClick={() => actions.favoritos("add", store.people[store.personaje].name)}>
+				onClick={() => actions.favoritos("add", store.planets[store.mundillo].name)}>
 				Add to favorites
 			</button>
 		</div>

@@ -9,7 +9,8 @@ export function CardPerson(props) {
 		name: PropTypes.string,
 		sexo: PropTypes.string,
 		origen: PropTypes.node,
-		img: PropTypes.string
+		img: PropTypes.string,
+		id: PropTypes.string
 	};
 
 	return (
@@ -31,7 +32,10 @@ export function CardPerson(props) {
 				</div>
 				<div id="botones" className="w-50">
 					<Link to="/detail">
-						<button type="button" className="btn  btn-warning m-2">
+						<button
+							type="button"
+							className="btn  btn-warning m-2"
+							onClick={() => actions.detalle(props.id)}>
 							More info..
 						</button>
 					</Link>

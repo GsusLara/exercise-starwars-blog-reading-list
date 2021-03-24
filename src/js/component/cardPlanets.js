@@ -11,7 +11,7 @@ export function CardPlanets(props) {
 		info: PropTypes.string,
 		tamaño: PropTypes.string,
 		poblacion: PropTypes.string,
-		id: PropTypes.number
+		id: PropTypes.string
 	};
 
 	return (
@@ -32,8 +32,11 @@ export function CardPlanets(props) {
 					</ul>
 				</div>
 				<div id="botones" className="w-50">
-					<Link to="/detail">
-						<button type="button" className="btn  btn-warning m-2">
+					<Link to="/detailP">
+						<button
+							type="button"
+							className="btn  btn-warning m-2"
+							onClick={() => actions.detalleP(props.id)}>
 							More info..
 						</button>
 					</Link>

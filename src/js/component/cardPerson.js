@@ -1,21 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import p1 from "../../img/person.jpg";
 
 export function CardPerson(props) {
 	CardPerson.propTypes = {
 		name: PropTypes.string,
-		info: PropTypes.string
+		sexo: PropTypes.string,
+		origen: PropTypes.node,
+		img: PropTypes.string
 	};
 
 	return (
 		<div className="col-5">
 			<div className="card card-block card-1">
-				<img src={p1} className="rounded float-start" />
+				<img src={props.img} className="rounded float-start" />
 				<div id="description" className="w-50 h-75  p-2 text-justify">
 					<h3>{props.name}</h3>
-					<p className="text-break">{props.info}</p>
+					<ul className="list-group mt-3">
+						<li className="list-group-item" style={{ background: "transparent" }}>
+							Gender:
+							{" " + props.sexo}
+						</li>
+						<li className="list-group-item" style={{ background: "transparent" }}>
+							Home World:
+							{" " + props.origen}
+						</li>
+					</ul>
 				</div>
 				<div id="botones" className="w-50">
 					<Link to="/detail">

@@ -1,6 +1,5 @@
-import { object } from "prop-types";
-
 const getState = ({ getStore, getActions, setStore }) => {
+	let temporal = [];
 	return {
 		store: {
 			planets: [],
@@ -14,7 +13,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" }
 				})
 					.then(response => response.json())
-					.then(result => console.log(result.results));
+					.then(result => {
+						setStore({ planets: result.results });
+					})
+					.catch();
 			},
 
 			personajes: () => {
@@ -22,7 +24,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET"
 				})
 					.then(response => response.json())
-					.then(result => console.log(result));
+					.then(result => {
+						setStore({ people: result });
+					})
+					.catch();
+			},
+			favoritos: (orden, nombre) => {
+				if (orden === "add") {
+					if (temporal.includes(nombre) == false) {
+						temporal.push(nombre);
+					} else {
+						alert("ya está en tus favoritos");
+					}
+				}
+				if (orden === "del") {
+					temporal = temporal.filter(word => word !== nombre);
+				}
+				setStore({ favorites: temporal });
 			}
 		}
 	};

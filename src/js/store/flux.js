@@ -10,19 +10,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			planetas: () => {
-				fetch("https://swapi.dev/api/planets/", {
+				// fetch("https://swapi.dev/api/planets/", {
+				fetch("https://3000-purple-goldfish-5qluvogo.ws-us03.gitpod.io/planets", {
 					method: "GET",
 					headers: { "Content-Type": "application/json" }
 				})
 					.then(response => response.json())
 					.then(result => {
-						setStore({ planets: result.results });
+						// setStore({ planets: result.results });
+						setStore({ planets: result });
 					})
 					.catch();
 			},
 
 			personajes: () => {
-				fetch("https://akabab.github.io/starwars-api/api/all.json", {
+				// fetch("https://akabab.github.io/starwars-api/api/all.json", {
+				fetch("https://3000-purple-goldfish-5qluvogo.ws-us03.gitpod.io/characters", {
 					method: "GET"
 				})
 					.then(response => response.json())

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import p2 from "../../img/Sullust.png";
 
 export function CardPlanets(props) {
 	const { store, actions } = useContext(Context);
@@ -11,13 +10,14 @@ export function CardPlanets(props) {
 		info: PropTypes.string,
 		tamaño: PropTypes.string,
 		poblacion: PropTypes.string,
-		id: PropTypes.string
+		id: PropTypes.string,
+		img: PropTypes.string
 	};
 
 	return (
 		<div className="col-5">
 			<div className="card card-block card-1">
-				<img src={p2} className="rounded float-start" />
+				<img src={props.img} className="rounded float-start" />
 				<div id="description" className="w-50 h-75  p-2 text-justify">
 					<h3>{props.name}</h3>
 					<ul className="list-group mt-3">

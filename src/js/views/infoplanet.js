@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
-import p2 from "../../img/Sullust.png";
 
 export const InfoPlanet = () => {
 	const { store, actions } = useContext(Context);
@@ -33,7 +32,7 @@ export const InfoPlanet = () => {
 						</li>
 					</div>
 					<div className="col-sm">
-						<img src={p2} style={{ height: "20rem" }} />
+						<img src={store.planets[store.mundillo].image} style={{ height: "20rem" }} />
 					</div>
 					<div className="col-sm">
 						<br />

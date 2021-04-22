@@ -42,6 +42,7 @@ export const Home = () => {
 								tamaño={item.diameter}
 								poblacion={item.population}
 								id={index}
+								img={item.image}
 							/>
 						);
 					})}

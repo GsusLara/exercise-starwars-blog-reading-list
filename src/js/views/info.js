@@ -64,6 +64,7 @@ export const Info = () => {
 			<button
 				type="button"
 				className="btn  btn-warning m-2"
+				style={{ display: store.vista ? "none" : "inline" }}
 				onClick={() => actions.favoritos("add", store.people[store.personaje].name)}>
 				Add to favorites
 			</button>

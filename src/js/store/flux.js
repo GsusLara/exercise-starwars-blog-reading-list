@@ -6,12 +6,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			favorites: [],
 			personaje: "",
-			mundillo: ""
+			mundillo: "",
+			vista: true
 		},
 		actions: {
 			planetas: () => {
 				// fetch("https://swapi.dev/api/planets/", {
-				fetch("https://3000-purple-goldfish-5qluvogo.ws-us03.gitpod.io/planets", {
+				fetch("https://3000-blush-hamster-zzzfm1i8.ws-us04.gitpod.io/planets", {
 					method: "GET",
 					headers: { "Content-Type": "application/json" }
 				})
@@ -25,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			personajes: () => {
 				// fetch("https://akabab.github.io/starwars-api/api/all.json", {
-				fetch("https://3000-purple-goldfish-5qluvogo.ws-us03.gitpod.io/characters", {
+				fetch("https://3000-blush-hamster-zzzfm1i8.ws-us04.gitpod.io/characters", {
 					method: "GET"
 				})
 					.then(response => response.json())
@@ -52,6 +53,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			detalleP: id => {
 				setStore({ mundillo: id });
+			},
+			usuarios: (username, password) => {
+				fetch("https://3000-blush-hamster-zzzfm1i8.ws-us03.gitpod.io/characters", {
+					method: "POST",
+					body: JSON.stringify({
+						email: username,
+						password: password
+					}),
+					headers: { "Content-Type": "application/json" }
+				}).then(respuesta => {
+					if (respuesta.status >= 200 && respuesta.status < 300) {
+						alert("inicio correcto");
+					}
+				});
+			},
+			cambio: condicion => {
+				setStore({ vista: condicion });
 			}
 		}
 	};

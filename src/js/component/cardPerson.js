@@ -10,7 +10,7 @@ export function CardPerson(props) {
 		sexo: PropTypes.string,
 		origen: PropTypes.node,
 		img: PropTypes.string,
-		id: PropTypes.string
+		id: PropTypes.number
 	};
 
 	return (

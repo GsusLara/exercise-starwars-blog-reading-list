@@ -9,25 +9,43 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
 	const [show, setShow] = useState(false);
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	// const [vista, setVista] = useState(true);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
-	const entrar = dato => {
-		actions.cambio(dato);
-		handleClose();
-		setEmail("");
-		setPassword("");
-	};
 	function validateForm() {
 		return email.length > 0 && password.length > 0;
 	}
 	function handleSubmit(event) {
 		event.preventDefault();
 	}
+	const validarUser = (user, password) => {
+		actions.validate(user, password);
+		setTimeout(() => desicion(), 1000);
+	};
+
+	const desicion = () => {
+		if (store.aprovacion === true) {
+			entrar(false);
+		} else {
+			setEmail("");
+			setPassword("");
+		}
+	};
+	const entrar = dato => {
+		actions.cambio(dato);
+		handleClose();
+		setEmail("");
+		setPassword("");
+	};
+
+	const salir = () => {
+		console.log(store.favorites);
+		actions.salida();
+		entrar(true);
+	};
 
 	return (
 		<nav className="navbar">
@@ -39,12 +57,12 @@ export const Navbar = () => {
 						onClick={handleShow}
 						className="mr-5 btn-warning"
 						style={{ display: store.vista ? "block" : "none" }}>
-						Iniciar Sesion
+						log in
 					</Button>
 
 					<Modal className="modalNav" show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 						<Modal.Header className="part">
-							<Modal.Title>Bienvenido!</Modal.Title>
+							<Modal.Title>Welcome!</Modal.Title>
 						</Modal.Header>
 						<Modal.Body className="part">
 							<Form className="mt-3">
@@ -55,6 +73,16 @@ export const Navbar = () => {
 										type="email"
 										value={email}
 										onChange={e => setEmail(e.target.value)}
+										onKeyPress={e => {
+											if (e.key == "Enter") {
+												if (email && password !== "") {
+													handleClose();
+													validarUser(email, password);
+												} else {
+													alert("set user and password");
+												}
+											}
+										}}
 									/>
 								</Form.Group>
 								<Form.Group size="lg" controlId="password">
@@ -63,21 +91,31 @@ export const Navbar = () => {
 										type="password"
 										value={password}
 										onChange={e => setPassword(e.target.value)}
+										onKeyPress={e => {
+											if (e.key == "Enter") {
+												if (email && password !== "") {
+													handleClose();
+													validarUser(email, password);
+												} else {
+													alert("set user and password");
+												}
+											}
+										}}
 									/>
 								</Form.Group>
 							</Form>
 						</Modal.Body>
 						<Modal.Footer className="part">
 							<Button variant="btn-warning" className="btn-warning" onClick={handleClose}>
-								Cerrar
+								Close
 							</Button>
 							<Button
 								variant="btn-warning"
 								className="btn-warning"
 								type="submit"
 								disabled={!validateForm()}
-								onClick={() => entrar(false)}>
-								Entrar
+								onClick={() => validarUser(email, password)}>
+								Get in
 							</Button>
 						</Modal.Footer>
 					</Modal>
@@ -111,8 +149,8 @@ export const Navbar = () => {
 					type="button"
 					className=" btn btn-secondary "
 					style={{ display: store.vista ? "none" : "flex" }}
-					onClick={() => entrar(true)}>
-					Cerrar Sesión
+					onClick={() => salir()}>
+					log out
 				</button>
 			</div>
 		</nav>

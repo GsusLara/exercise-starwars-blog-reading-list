@@ -8,9 +8,9 @@ export function CardPlanets(props) {
 	CardPlanets.propTypes = {
 		name: PropTypes.string,
 		info: PropTypes.string,
-		tamaño: PropTypes.string,
-		poblacion: PropTypes.string,
-		id: PropTypes.string,
+		tamaño: PropTypes.number,
+		poblacion: PropTypes.number,
+		id: PropTypes.number,
 		img: PropTypes.string
 	};
 

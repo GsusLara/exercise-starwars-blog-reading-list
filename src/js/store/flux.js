@@ -2,8 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 	let temporal = [];
 	return {
 		store: {
-			// id: "",
-			// token: "",
 			aprovacion: false,
 			planets: [],
 			people: [],
@@ -84,8 +82,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cambio: condicion => {
 				setStore({ vista: condicion });
 			},
-			salida: () => {
+			salida: datafavorites => {
+				let favoritoscarga = datafavorites.toString();
+				let myHeaders = new Headers();
+				myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
+				myHeaders.append("Content-Type", "application/json");
+
+				let raw = JSON.stringify({
+					favorites: favoritoscarga
+				});
+
+				let requestOptions = {
+					method: "PUT",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				fetch(process.env.BACKEND_URL + "/user", requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+				temporal = [];
+				setStore({ favorites: [] });
 				setStore({ aprovacion: false });
+			},
+			getfavoritos: () => {
+				let myHeaders = new Headers();
+				myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
+
+				let requestOptions = {
+					method: "GET",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+
+				fetch(process.env.BACKEND_URL + "/user", requestOptions)
+					.then(response => {
+						if (response.status >= 200 && response.status < 300) return response.json();
+					})
+					.then(result => {
+						let apifavorites = result.favorites;
+						temporal = apifavorites.split(",");
+						setStore({ favorites: temporal });
+					})
+					.catch(error => error);
 			}
 		}
 	};

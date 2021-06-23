@@ -23,7 +23,7 @@ export const Navbar = () => {
 	}
 	const validarUser = (user, password) => {
 		actions.validate(user, password);
-		setTimeout(() => desicion(), 1000);
+		setTimeout(() => desicion(), 2000);
 	};
 
 	const desicion = () => {
@@ -35,6 +35,7 @@ export const Navbar = () => {
 		}
 	};
 	const entrar = dato => {
+		actions.getfavoritos();
 		actions.cambio(dato);
 		handleClose();
 		setEmail("");
@@ -42,8 +43,7 @@ export const Navbar = () => {
 	};
 
 	const salir = () => {
-		console.log(store.favorites);
-		actions.salida();
+		actions.salida(store.favorites);
 		entrar(true);
 	};
 

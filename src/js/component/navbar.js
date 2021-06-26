@@ -7,28 +7,46 @@ import Form from "react-bootstrap/Form";
 import ModalTitle from "react-bootstrap/ModalTitle";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-
-	const [show, setShow] = useState(false);
+	const [login, setlogin] = useState(false);
+	const [register, setregister] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [passwordvalide, setPasswordvalide] = useState("");
+	const loginClose = () => setlogin(false);
+	const loginShow = () => setlogin(true);
+	const registerClose = () => setregister(false);
+	const registerShow = () => setregister(true);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
-
-	function validateForm() {
-		return email.length > 0 && password.length > 0;
-	}
-	function handleSubmit(event) {
-		event.preventDefault();
-	}
-	const validarUser = (user, password) => {
-		actions.validate(user, password);
-		setTimeout(() => desicion(), 2000);
+	const guardarUsuario = (email, password, passwordvalide) => {
+		if (email && password && passwordvalide == "") {
+			alert("set User name and password");
+		} else if (password !== passwordvalide) {
+			alert("Passwords do not match");
+		} else if (password.length < 8) {
+			alert("the password must have more than 8 characters");
+		} else {
+			//accion
+			registerClose();
+		}
 	};
-
+	const validateForm = () => {
+		return email.length > 0 && password.length > 0;
+	};
+	const handleSubmit = event => {
+		event.preventDefault();
+	};
+	const validarUser = (user, password) => {
+		if (email && password !== "") {
+			actions.validate(user, password);
+			setTimeout(() => desicion(), 2000);
+		} else {
+			alert("set user and password");
+		}
+	};
 	const desicion = () => {
 		if (store.aprovacion === true) {
 			entrar(false);
+			loginClose();
 		} else {
 			setEmail("");
 			setPassword("");
@@ -37,16 +55,14 @@ export const Navbar = () => {
 	const entrar = dato => {
 		actions.getfavoritos();
 		actions.cambio(dato);
-		handleClose();
+		loginClose();
 		setEmail("");
 		setPassword("");
 	};
-
 	const salir = () => {
 		actions.salida(store.favorites);
 		entrar(true);
 	};
-
 	return (
 		<nav className="navbar">
 			<img id="logo" src={logo} />
@@ -54,13 +70,13 @@ export const Navbar = () => {
 				<>
 					<Button
 						variant="btn-warning"
-						onClick={handleShow}
+						onClick={() => loginShow()}
 						className="mr-5 btn-warning"
 						style={{ display: store.vista ? "block" : "none" }}>
 						log in
 					</Button>
 
-					<Modal className="modalNav" show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+					<Modal className="modalNav" show={login} onHide={loginClose} backdrop="static" keyboard={false}>
 						<Modal.Header className="part">
 							<Modal.Title>Welcome!</Modal.Title>
 						</Modal.Header>
@@ -75,12 +91,7 @@ export const Navbar = () => {
 										onChange={e => setEmail(e.target.value)}
 										onKeyPress={e => {
 											if (e.key == "Enter") {
-												if (email && password !== "") {
-													handleClose();
-													validarUser(email, password);
-												} else {
-													alert("set user and password");
-												}
+												validarUser(email, password);
 											}
 										}}
 									/>
@@ -93,12 +104,7 @@ export const Navbar = () => {
 										onChange={e => setPassword(e.target.value)}
 										onKeyPress={e => {
 											if (e.key == "Enter") {
-												if (email && password !== "") {
-													handleClose();
-													validarUser(email, password);
-												} else {
-													alert("set user and password");
-												}
+												validarUser(email, password);
 											}
 										}}
 									/>
@@ -106,7 +112,7 @@ export const Navbar = () => {
 							</Form>
 						</Modal.Body>
 						<Modal.Footer className="part">
-							<Button variant="btn-warning" className="btn-warning" onClick={handleClose}>
+							<Button variant="btn-warning" className="btn-warning" onClick={loginClose}>
 								Close
 							</Button>
 							<Button
@@ -116,6 +122,82 @@ export const Navbar = () => {
 								disabled={!validateForm()}
 								onClick={() => validarUser(email, password)}>
 								Get in
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				</>
+				<>
+					<Button
+						variant="btn-warning"
+						onClick={() => registerShow()}
+						className="mr-5 btn-warning"
+						style={{ display: store.vista ? "block" : "none" }}>
+						Register
+					</Button>
+
+					<Modal
+						className="modalNav"
+						show={register}
+						onHide={registerClose}
+						backdrop="static"
+						keyboard={false}>
+						<Modal.Header className="part">
+							<Modal.Title>Register now!</Modal.Title>
+						</Modal.Header>
+						<Modal.Body className="part">
+							<Form className="mt-3">
+								<Form.Group size="lg" controlId="email">
+									<Form.Label>Email</Form.Label>
+									<Form.Control
+										autoFocus
+										type="email"
+										value={email}
+										onChange={i => setEmail(i.target.value)}
+										onKeyPress={i => {
+											if (i.key == "Enter") {
+												guardarUsuario(email, password, passwordvalide);
+											}
+										}}
+									/>
+								</Form.Group>
+								<Form.Group size="lg" controlId="password">
+									<Form.Label>Password</Form.Label>
+									<Form.Control
+										type="password"
+										value={password}
+										onChange={i => setPassword(i.target.value)}
+										onKeyPress={i => {
+											if (i.key == "Enter") {
+												guardarUsuario(email, password, passwordvalide);
+											}
+										}}
+									/>
+								</Form.Group>
+								<Form.Group size="lg" controlId="password">
+									<Form.Label>Confirm Password</Form.Label>
+									<Form.Control
+										type="password"
+										value={passwordvalide}
+										onChange={i => setPasswordvalide(i.target.value)}
+										onKeyPress={i => {
+											if (i.key == "Enter") {
+												guardarUsuario(email, password, passwordvalide);
+											}
+										}}
+									/>
+								</Form.Group>
+							</Form>
+						</Modal.Body>
+						<Modal.Footer className="part">
+							<Button variant="btn-warning" className="btn-warning" onClick={() => registerClose()}>
+								Close
+							</Button>
+							<Button
+								variant="btn-warning"
+								className="btn-warning"
+								type="submit"
+								onClick={() => guardarUsuario(email, password, passwordvalide)}>
+								Save
 							</Button>
 						</Modal.Footer>
 					</Modal>

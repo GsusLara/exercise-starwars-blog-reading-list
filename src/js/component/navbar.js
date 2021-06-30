@@ -25,7 +25,7 @@ export const Navbar = () => {
 		} else if (password.length < 8) {
 			alert("the password must have more than 8 characters");
 		} else {
-			//accion
+			actions.addUser(email, password);
 			registerClose();
 		}
 	};
@@ -87,6 +87,7 @@ export const Navbar = () => {
 									<Form.Control
 										autoFocus
 										type="email"
+										autoComplete="email"
 										value={email}
 										onChange={e => setEmail(e.target.value)}
 										onKeyPress={e => {
@@ -100,6 +101,7 @@ export const Navbar = () => {
 									<Form.Label>Password</Form.Label>
 									<Form.Control
 										type="password"
+										autoComplete="password"
 										value={password}
 										onChange={e => setPassword(e.target.value)}
 										onKeyPress={e => {
@@ -151,6 +153,7 @@ export const Navbar = () => {
 									<Form.Control
 										autoFocus
 										type="email"
+										autoComplete="email"
 										value={email}
 										onChange={i => setEmail(i.target.value)}
 										onKeyPress={i => {
@@ -165,6 +168,7 @@ export const Navbar = () => {
 									<Form.Control
 										type="password"
 										value={password}
+										autoComplete="password"
 										onChange={i => setPassword(i.target.value)}
 										onKeyPress={i => {
 											if (i.key == "Enter") {
@@ -173,10 +177,11 @@ export const Navbar = () => {
 										}}
 									/>
 								</Form.Group>
-								<Form.Group size="lg" controlId="password">
+								<Form.Group size="lg" controlId="confirmPassword">
 									<Form.Label>Confirm Password</Form.Label>
 									<Form.Control
 										type="password"
+										autoComplete="password"
 										value={passwordvalide}
 										onChange={i => setPasswordvalide(i.target.value)}
 										onKeyPress={i => {

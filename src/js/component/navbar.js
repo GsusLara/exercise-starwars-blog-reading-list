@@ -64,15 +64,17 @@ export const Navbar = () => {
 		entrar(true);
 	};
 	return (
-		<nav className="navbar">
-			<img id="logo" src={logo} />
-			<div className="mr-1 d-flex">
+		<nav className="navbar navbar-light">
+			<div className="navbar-brand">
+				<img className="logo" src={logo} />
+			</div>
+			<div className="my-0">
 				<>
 					<Button
 						variant="btn-warning"
 						onClick={() => loginShow()}
-						className="mr-5 btn-warning"
-						style={{ display: store.vista ? "block" : "none" }}>
+						className="m-2 btn-warning"
+						style={{ display: store.vista ? "inline" : "none" }}>
 						log in
 					</Button>
 
@@ -132,8 +134,8 @@ export const Navbar = () => {
 					<Button
 						variant="btn-warning"
 						onClick={() => registerShow()}
-						className="mr-5 btn-warning"
-						style={{ display: store.vista ? "block" : "none" }}>
+						className="m-2 btn-warning"
+						style={{ display: store.vista ? "inline" : "none" }}>
 						Register
 					</Button>
 
@@ -208,7 +210,7 @@ export const Navbar = () => {
 					</Modal>
 				</>
 
-				<div className="dropdown mr-5" style={{ display: store.vista ? "none" : "flex" }}>
+				<div className="dropdown m-2" style={{ display: store.vista ? "none" : "inline" }}>
 					<button
 						className="btn btn-warning dropdown-toggle"
 						type="button"
@@ -234,8 +236,8 @@ export const Navbar = () => {
 				</div>
 				<button
 					type="button"
-					className=" btn btn-secondary "
-					style={{ display: store.vista ? "none" : "flex" }}
+					className=" btn btn-secondary m-2"
+					style={{ display: store.vista ? "none" : "inline" }}
 					onClick={() => salir()}>
 					log out
 				</button>

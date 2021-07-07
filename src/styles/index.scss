@@ -3,12 +3,25 @@
 /* 
     General Styles
 */
-
-nav{
+body{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
     background: black;
 }
-#logo{
+.logo{
     width: 12rem;
+}
+.modal-backdrop {
+    margin: 0;
+    padding: 0;
+  background-color: gray;
+}
+.part
+{
+background: black;
+font-family: 'Roboto', sans-serif;
 }
 footer{
     color:  #ffe81f;
@@ -22,11 +35,8 @@ footer{
     margin: 1rem;
     color:  #ffe81f;
 }
-.modal-backdrop {
-  background-color: gray;
-}
-.part
-{
-background: black;
-font-family: 'Roboto', sans-serif;
+@media screen and (max-width:767px){
+    .logo{
+        width: 6.5rem;
+    }
 }

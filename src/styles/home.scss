@@ -68,4 +68,19 @@ h1{
 		box-shadow: none;
 	}
 }
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next{ 
+    background: grey;
+}
 
+// .slick-prev::before,
+// .slick-next::before{
+//     display: none;
+// }
+.slick-dots{
+    color:rgb(175, 171, 171);
+    font-size: 2rem;
+}
+.slick-dots li.slick-active{
+    font-size: 3rem;
+}

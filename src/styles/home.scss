@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-
-// .scrolling-wrapper{
-// 	overflow-x: auto;
-// }
-
 body{
 	background-image: url(https://wallpapercave.com/wp/pEeUsp1.jpg);
 	color: #ffe81f;
@@ -13,47 +8,10 @@ body{
 ::-webkit-scrollbar{
     display: none;
 }
-
-//   ::-webkit-scrollbar {
-//       width:  10px;
-//       height: 10px;
-//   }
-  
-
-//   ::-webkit-scrollbar-thumb {
-//       background: gray;
-      
-//   }
-
-//   ::-webkit-scrollbar-track {
-//       background: transparent;
-//   }
-
-
-// h1{
-// 	font-weight: 800;
-// 	font-size: 3em;
-// }
-
-// .card-block{
-// 	height: 15rem;
-// 	background-color: transparent;
-// 	background-position: center;
-// 	background-size: cover;
-// 	transition: all 0.2s ease-in-out !important;
-// 	border-radius: 24px;
-// 	&:hover{
-// 		transform: translateY(-5px);
-// 		box-shadow: none;
-// 	}
-// }
-// .rounded{
-//    position: absolute;
-//    width: 15rem;
-//    height: auto;
-//    bottom: 1rem;
-//    left: 1rem
-// }
+.titles{
+	font-weight: 800;
+	font-size: 3em;
+}
 .btn-warning{
     background: #ffe81f;
     &:hover{

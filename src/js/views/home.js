@@ -2,56 +2,27 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
-import { CardPerson } from "../component/cardPerson";
-import { CardPlanets } from "../component/cardPlanets";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import PropTypes from "prop-types";
-
-const Leftbuton = props => {
-	Leftbuton.propTypes = {
-		className: PropTypes.string,
-		onClick: PropTypes.func
-	};
-	return (
-		<div className={props.className} onClick={props.onClick}>
-			<i className="fas fa-chevron-left" />
-		</div>
-	);
-};
-const Rightbuton = props => {
-	Rightbuton.propTypes = {
-		className: PropTypes.string,
-		onClick: PropTypes.string,
-		style: PropTypes.string
-	};
-	return (
-		<div
-			className={props.className}
-			onClick={onClick}
-			style={{ ...props.style, display: "block", background: "red" }}>
-			<i className="fas fa-camera fa-10x" />
-		</div>
-	);
-};
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	const settings = {
-		// autoplay: true,
-		// autoplaySpeed: 5000,
+		autoplay: true,
+		autoplaySpeed: 3000,
 		infinite: true,
 		slidesToShow: 3,
-		dots: true,
-		prevArrow: <Leftbuton />,
-		nextArrow: <Rightbuton />
+		dots: true
 	};
 
 	return (
-		<div className="carousel row" style={{ background: "white" }}>
-			<div className="carouselContenedor col-10 mx-auto">
+		<div className="cuerpo row mt-3">
+			<div className="text-center col-12">
+				<h1 className="titles">Characters</h1>
+			</div>
+			<div className="carouselPersonajes col-10 mx-auto mt-2">
 				<div className="carouserlLista">
 					<Slider
 						customPaging={i => {
@@ -60,13 +31,100 @@ export const Home = () => {
 						{...settings}>
 						{store.people.map((item, index) => {
 							return (
-								<div className="carouserlElemento" key={index}>
-									{store.people[2] != undefined ? (
-										<img src={item.image} alt="personaje" style={{ height: "30vh" }} />
-									) : (
-										"loading..."
-									)}
-									<p>{store.people[2] != undefined ? item.name : "loading..."}</p>
+								<div className="container carouserlElemento" key={index} style={{ width: "20vw" }}>
+									<div className="row ">
+										<div className="col-6">
+											{store.people[2] != undefined ? (
+												<img src={item.image} alt="personaje" className="img-fluid" />
+											) : (
+												"loading..."
+											)}
+											<p>{store.people[2] != undefined ? item.name : "loading..."}</p>
+										</div>
+										<div className="col-6">
+											<ul className="list-group ">
+												<li className="list-group-item" style={{ background: "transparent" }}>
+													Gender:
+													{" " + item.gender}
+												</li>
+												<li className="list-group-item" style={{ background: "transparent" }}>
+													Home World:
+													{" " + item.homeworld}
+												</li>
+											</ul>
+											<Link to="/detail">
+												<button
+													type="button"
+													className="btn  btn-warning "
+													onClick={() => actions.detalle(index)}>
+													More info..
+												</button>
+											</Link>
+											<button
+												type="button"
+												className="btn  btn-warning mt-2"
+												style={{ display: store.vista ? "none" : "block" }}
+												onClick={() => actions.favoritos("add", item.name)}>
+												Add to favorites
+											</button>
+										</div>
+									</div>
+								</div>
+							);
+						})}
+					</Slider>
+				</div>
+			</div>
+			<div className="text-center col-12 mt-5">
+				<h1 className="titles">Planets</h1>
+			</div>
+			<div className="carouselPlanetas col-10 mx-auto mt-2 mb-3">
+				<div className="carouserlLista">
+					<Slider
+						customPaging={i => {
+							return <div>{"•"}</div>;
+						}}
+						{...settings}>
+						{store.planets.map((item, index) => {
+							return (
+								<div className="carouserlElemento " key={index}>
+									<div className="row ">
+										<div className="col-6">
+											{store.people[2] != undefined ? (
+												<img src={item.image} alt="personaje" className="img-fluid" />
+											) : (
+												"loading..."
+											)}
+											<p>{store.people[2] != undefined ? item.name : "loading..."}</p>
+										</div>
+										<div className="col-6">
+											<ul className="list-group ">
+												<li className="list-group-item" style={{ background: "transparent" }}>
+													Diameter:
+													{" " + item.diameter}
+												</li>
+												<li className="list-group-item" style={{ background: "transparent" }}>
+													Population:
+													{" " + item.population}
+												</li>
+											</ul>
+											<Link to="/detail">
+												<button
+													type="button"
+													className="btn  btn-warning "
+													onClick={() => actions.detalle(index)}>
+													More info..
+												</button>
+											</Link>
+											<button
+												type="button"
+												className="btn  btn-warning mt-2"
+												style={{ display: store.vista ? "none" : "block" }}
+												onClick={() => actions.favoritos("add", item.name)}>
+												Add to favorites
+											</button>
+										</div>
+									</div>
 								</div>
 							);
 						})}
@@ -76,28 +134,3 @@ export const Home = () => {
 		</div>
 	);
 };
-// <div className="container-fluid text-center">
-// 	<div className="mt-5">
-// 		<h1>Characters</h1>
-// 		<div className="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
-// 			{store.people.map((item, index) => {
-// 				return (
-// 					<CardPerson
-// 						key={index}
-// 						name={item.name}
-// 						img={item.image}
-// 						sexo={item.gender}
-// 						origen={item.homeworld}
-// 						id={index}
-// 					/>
-// 				);
-// 			})}
-
-// </div>
-// {store.people.map((item, index) => {
-// 	return (
-// 		<Paper key={index} square elevation={0} className={classes.header}>
-// 			<Typography key={index}>{item.name}</Typography>;
-// 		</Paper>
-// 	);
-// })}

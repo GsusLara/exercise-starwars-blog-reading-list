@@ -14,7 +14,21 @@ export const Home = () => {
 		autoplaySpeed: 3000,
 		infinite: true,
 		slidesToShow: 3,
-		dots: true
+		dots: false,
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1
+				}
+			},
+			{
+				breakpoint: 991,
+				settings: {
+					slidesToShow: 2
+				}
+			}
+		]
 	};
 
 	return (
@@ -31,9 +45,9 @@ export const Home = () => {
 						{...settings}>
 						{store.people.map((item, index) => {
 							return (
-								<div className="container carouserlElemento" key={index} style={{ width: "20vw" }}>
+								<div className="container carouserlElemento" key={index}>
 									<div className="row ">
-										<div className="col-6">
+										<div className="col-12 col-md-6">
 											{store.people[2] != undefined ? (
 												<img src={item.image} alt="personaje" className="img-fluid" />
 											) : (
@@ -41,7 +55,7 @@ export const Home = () => {
 											)}
 											<p>{store.people[2] != undefined ? item.name : "loading..."}</p>
 										</div>
-										<div className="col-6">
+										<div className="col-12 col-md-6">
 											<ul className="list-group ">
 												<li className="list-group-item" style={{ background: "transparent" }}>
 													Gender:
@@ -88,16 +102,16 @@ export const Home = () => {
 						{store.planets.map((item, index) => {
 							return (
 								<div className="carouserlElemento " key={index}>
-									<div className="row ">
-										<div className="col-6">
+									<div className="row">
+										<div className="col-12 col-md-6">
 											{store.people[2] != undefined ? (
-												<img src={item.image} alt="personaje" className="img-fluid" />
+												<img src={item.image} alt="planeta" className="img-fluid mx-auto" />
 											) : (
 												"loading..."
 											)}
 											<p>{store.people[2] != undefined ? item.name : "loading..."}</p>
 										</div>
-										<div className="col-6">
+										<div className="col-12 col-md-6">
 											<ul className="list-group ">
 												<li className="list-group-item" style={{ background: "transparent" }}>
 													Diameter:

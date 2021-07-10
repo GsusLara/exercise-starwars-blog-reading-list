@@ -12,7 +12,7 @@
 		"deploy": "node deploy-to-github.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
+		"name": "Jesus Lara Mendez",
 		"url": "http://alesanchezr.com/"
 	},
 	"contributors": [

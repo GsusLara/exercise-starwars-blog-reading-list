@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
 export const Footer = () => (
-	<footer className=" text-center text-lg-start mt-5">
+	<footer className=" text-center  mt-5">
 		<div className="container p-4">
 			<div className="row">
 				<div className="col-lg-6 col-md-12 mb-4 mb-md-0">
@@ -14,7 +14,7 @@ export const Footer = () => (
 						about guests and their devices.
 					</p>
 				</div>
-				<div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<div className="col-lg-6 col-md-6 mb-4 mb-md-0 ">
 					<h5 className="text-uppercase mb-0">FOLLOW STAR WARS:</h5>
 					<div id="social" className="container text-center mt-5">
 						<a href="https://www.instagram.com/starwars/" target="blank" className="ico">

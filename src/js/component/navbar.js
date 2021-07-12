@@ -4,7 +4,7 @@ import logo from "../../img/starwars.png";
 import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import ModalTitle from "react-bootstrap/ModalTitle";
+
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const [login, setlogin] = useState(false);
@@ -16,10 +16,13 @@ export const Navbar = () => {
 	const loginShow = () => setlogin(true);
 	const registerClose = () => setregister(false);
 	const registerShow = () => setregister(true);
+	const revisionEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 	const guardarUsuario = (email, password, passwordvalide) => {
 		if (email && password && passwordvalide == "") {
 			alert("set User name and password");
+		} else if (revisionEmail.test(email) !== true) {
+			alert("email invalid");
 		} else if (password !== passwordvalide) {
 			alert("Passwords do not match");
 		} else if (password.length < 8) {

@@ -37,7 +37,7 @@ export const Home = () => {
 			store.planets.length == 0
 				? setInterval(() => {
 						setloading(false);
-				  }, 18000)
+				  }, 25000)
 				: setloading(false);
 		}, 1000);
 	}, []);
@@ -152,11 +152,11 @@ export const Home = () => {
 														{" " + item.population}
 													</li>
 												</ul>
-												<Link to="/detail">
+												<Link to="/detailP">
 													<button
 														type="button"
 														className="btn  btn-warning "
-														onClick={() => actions.detalle(index)}>
+														onClick={() => actions.detalleP(index)}>
 														More info..
 													</button>
 												</Link>
